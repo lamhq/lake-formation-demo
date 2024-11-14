@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+env/
+venv/
+.venv/
+*.egg-info/
+*.eggs/
+*.pyo
+*.pyd
+*.env
+*.pytest_cache/
+.cache/
+.tox/
+.coverage
+coverage.xml
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.terraform/
+.terraform.lock.hcl
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+
+# C extensions
+*.so
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+*.cover
+*.py,cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
