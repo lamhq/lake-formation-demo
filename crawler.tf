@@ -26,9 +26,10 @@ resource "aws_iam_role_policy" "customer_crawler_inline_policy" {
       {
         Effect   = "Allow"
         Action = [
-          "s3:GetObject",
+          "lakeformation:GetDataAccess",
+          "lakeformation:GrantPermissions"
         ]
-        Resource = "arn:aws:s3:::${local.bucket_prefix}/source/customers/*"
+        Resource = "*"
       }
     ]
   })
@@ -55,6 +56,10 @@ resource "aws_glue_crawler" "customer_crawler" {
   database_name = aws_glue_catalog_database.source_db.name
   name          = "${local.name_prefix}-customer-crawler"
   role          = aws_iam_role.customer_crawler_role.arn
+
+  lake_formation_configuration {
+    use_lake_formation_credentials = true
+  }
 
   s3_target {
     path = "s3://${local.bucket_prefix}/source/customers"
