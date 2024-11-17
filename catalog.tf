@@ -1,17 +1,17 @@
-# lake formation database
-resource "aws_glue_catalog_database" "bronze_db" {
-  name = "${local.name_prefix}-bronze"
+# source database
+resource "aws_glue_catalog_database" "source_db" {
+  name = "${local.name_prefix}-source"
 }
 
-# register a data lake location
-resource "aws_lakeformation_resource" "customer_location" {
-  arn = "arn:aws:s3:::${var.artifact_bucket}/lf-demo/dev/raw/customers/"
-  role_arn = aws_iam_role.location_role.arn
+# target database
+resource "aws_glue_catalog_database" "target_db" {
+  name = "${local.name_prefix}-target"
+  location_uri = "s3://${local.bucket_prefix}/target"
 }
 
-# data lake location role
+# IAM role for all data lake locations
 resource "aws_iam_role" "location_role" {
-  name = "${local.name_prefix}-localtion-role"
+  name = "${local.name_prefix}-location-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -25,7 +25,7 @@ resource "aws_iam_role" "location_role" {
   })
 }
 
-# data lake location role policy
+# location role policy
 resource "aws_iam_role_policy" "location_role_inline_policy" {
   role = aws_iam_role.location_role.id
   policy = jsonencode({
@@ -34,11 +34,18 @@ resource "aws_iam_role_policy" "location_role_inline_policy" {
       {
         Effect   = "Allow"
         Action = [
+          "s3:GetObject"
+        ]
+        Resource = "arn:aws:s3:::${local.bucket_prefix}/source/*"
+      },
+      {
+        Effect   = "Allow"
+        Action = [
           "s3:GetObject",
           "s3:PutObject",
           "s3:DeleteObject"
         ]
-        Resource = "arn:aws:s3:::${var.artifact_bucket}/${var.project}/${local.env}/raw/customers/*"
+        Resource = "arn:aws:s3:::${local.bucket_prefix}/target/*"
       },
       {
         Effect   = "Allow"
