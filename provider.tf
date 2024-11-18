@@ -27,7 +27,6 @@ provider "aws" {
     tags = {
       owner = var.owner
       project = var.project
-      role = "zoiautomationrole"
     }
   }
 }

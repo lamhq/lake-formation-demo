@@ -3,8 +3,8 @@
 ## Overview
 
 A project that demonstate:
-- Build a data lake with S3 data source
-- Create an ETL job that load data to data lake
+- Build a data lake with data stored in S3
+- Create an ETL job that copy data between data lakes
 
 
 ## Frequently Used Commands

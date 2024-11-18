@@ -11,6 +11,8 @@ resource "aws_iam_role" "customer_crawler_role" {
       }
     }]
   })
+
+  tags = local.role_tags
 }
 
 resource "aws_iam_role_policy_attachment" "customer_crawler_role_policies" {

@@ -22,6 +22,8 @@ resource "aws_iam_role" "location_role" {
       }
     }]
   })
+
+  tags = local.role_tags
 }
 
 # location role policy

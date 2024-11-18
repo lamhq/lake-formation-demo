@@ -11,6 +11,8 @@ resource "aws_iam_role" "glue_job_role" {
       }
     }]
   })
+
+  tags = local.role_tags
 }
 
 resource "aws_iam_role_policy_attachment" "glue_job_role_policies" {
