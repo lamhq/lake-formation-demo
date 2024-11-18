@@ -65,6 +65,10 @@ resource "aws_glue_crawler" "customer_crawler" {
     path = "s3://${local.bucket_prefix}/source/customers"
   }
 
+  s3_target {
+    path = "s3://${local.bucket_prefix}/source/products"
+  }
+
   schema_change_policy {
     delete_behavior = "DELETE_FROM_DATABASE"
     update_behavior = "UPDATE_IN_DATABASE"

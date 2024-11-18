@@ -32,17 +32,3 @@ terraform destroy -var-file="params.tfvars" --auto-approve
 terraform workspace select default
 terraform workspace delete dev
 ```
-
-
-## Todo
-
-### Build a data lake
-
-- [ ] allow querying table from athena without granting permission to user
-
-### Create an ETL job
-- [ ] apply least-privileges to `AWSGlueServiceRole-lakef-demo-glue-job`
-- [ ] incremental ingest (job bookmark?)
-
-Administators:
-- [ ] grant permissions to data lake administrator to query data
