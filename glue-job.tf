@@ -26,7 +26,7 @@ resource "aws_iam_role_policy" "glue_job_inline_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
+        Effect = "Allow"
         Action = [
           "lakeformation:GetDataAccess",
           "lakeformation:GrantPermissions"
@@ -34,7 +34,7 @@ resource "aws_iam_role_policy" "glue_job_inline_policy" {
         Resource = "*"
       },
       {
-        Effect   = "Allow"
+        Effect = "Allow"
         Action = [
           "s3:PutObject"
         ]
@@ -75,7 +75,7 @@ resource "aws_lakeformation_permissions" "glue_job_source_location_permission" {
 # }
 
 resource "aws_lakeformation_permissions" "glue_job_target_db_permissions" {
-  principal = aws_iam_role.glue_job_role.arn
+  principal   = aws_iam_role.glue_job_role.arn
   permissions = ["CREATE_TABLE", "DESCRIBE"]
   database {
     name = aws_glue_catalog_database.target_db.name
@@ -85,7 +85,7 @@ resource "aws_lakeformation_permissions" "glue_job_target_db_permissions" {
 
 ### DEFAULT DB PERMISSIONS ###
 resource "aws_lakeformation_permissions" "glue_job_default_db_permissions" {
-  principal = aws_iam_role.glue_job_role.arn
+  principal   = aws_iam_role.glue_job_role.arn
   permissions = ["DESCRIBE"]
   database {
     name = "default"

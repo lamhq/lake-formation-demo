@@ -17,7 +17,7 @@ This project demonstrates how to:
 ## Prepare
 
 Create a `backend.tfvars` file that contains configuration for Terraform S3 backend:
-```hcl filename="params.tfvars"
+```hcl filename="backend.tfvars"
 region               = ""
 workspace_key_prefix = ""
 bucket               = ""

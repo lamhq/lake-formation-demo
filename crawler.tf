@@ -26,7 +26,7 @@ resource "aws_iam_role_policy" "customer_crawler_inline_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
+        Effect = "Allow"
         Action = [
           "lakeformation:GetDataAccess",
           "lakeformation:GrantPermissions"
@@ -47,7 +47,7 @@ resource "aws_lakeformation_permissions" "customer_crawler_source_location_permi
 }
 
 resource "aws_lakeformation_permissions" "customer_crawler_catalog_permissions" {
-  principal = aws_iam_role.customer_crawler_role.arn
+  principal   = aws_iam_role.customer_crawler_role.arn
   permissions = ["CREATE_TABLE"]
   database {
     name = aws_glue_catalog_database.source_db.name

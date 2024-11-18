@@ -5,12 +5,12 @@ variable "region" {
 }
 
 variable "owner" {
-  type    = string
+  type        = string
   description = "Email of project owner"
 }
 
 variable "project" {
-  type    = string
+  type        = string
   description = "Project name"
 }
 
