@@ -6,7 +6,6 @@ resource "aws_glue_catalog_database" "source_db" {
 # target database
 resource "aws_glue_catalog_database" "target_db" {
   name = "${local.name_prefix}-target"
-  location_uri = "s3://${local.bucket_prefix}/target"
 }
 
 # IAM role for all data lake locations
