@@ -63,14 +63,14 @@ resource "aws_lakeformation_permissions" "glue_job_source_location_permission" {
 
 
 ### TARGET DB PERMISSIONS ###
-resource "aws_lakeformation_permissions" "glue_job_target_location_permission" {
-  principal   = aws_iam_role.glue_job_role.arn
-  permissions = ["DATA_LOCATION_ACCESS"]
+# resource "aws_lakeformation_permissions" "glue_job_target_location_permission" {
+#   principal   = aws_iam_role.glue_job_role.arn
+#   permissions = ["DATA_LOCATION_ACCESS"]
 
-  data_location {
-    arn = aws_lakeformation_resource.target_location.arn
-  }
-}
+#   data_location {
+#     arn = aws_lakeformation_resource.target_location.arn
+#   }
+# }
 
 resource "aws_lakeformation_permissions" "glue_job_target_db_permissions" {
   principal = aws_iam_role.glue_job_role.arn
