@@ -41,7 +41,7 @@ terraform workspace select dev
 ```
 
 
-## Create AWS resources
+## Deploy & sync
 
 ```shell
 terraform apply -var-file="params.tfvars" --auto-approve
